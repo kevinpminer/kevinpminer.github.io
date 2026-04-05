@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kevin P. Miner</title>
 <meta name="google-site-verification" content="2pQ2so2XOzIS4Dyd0k5c1400FczwjAKrg7OQ8v_u_0Q" />
-<meta name="description" content="Kevin P. Miner, DPhil candidate at Saïd Business School, University of Oxford. Research in organizational sociology, institutional theory, and strategy.">
+<meta name="description" content="Kevin P. Miner, PhD student at Saïd Business School, University of Oxford. Research in organizational sociology, institutional theory, and strategy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <style>
@@ -19,9 +19,7 @@
     --gap: 64px;
     --font: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
   }
-
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: var(--font);
     font-size: 15px;
@@ -29,11 +27,27 @@
     color: var(--body);
     background: var(--bg);
     -webkit-font-smoothing: antialiased;
+    position: relative;
+    min-height: 100vh;
   }
-
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('oxford-bg.webp');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: -1;
+  }
   a { color: var(--link); text-decoration: none; }
   a:hover { text-decoration: underline; }
-
   .container {
     max-width: 880px;
     margin: 0 auto;
@@ -41,8 +55,6 @@
     display: flex;
     gap: var(--gap);
   }
-
-  /* ---- SIDEBAR ---- */
   .sidebar {
     width: var(--sidebar-w);
     flex-shrink: 0;
@@ -50,7 +62,6 @@
     top: 56px;
     align-self: flex-start;
   }
-
   .sidebar h1 {
     font-size: 26px;
     font-weight: 700;
@@ -59,9 +70,8 @@
     margin-bottom: 22px;
     letter-spacing: -0.01em;
   }
-
   .photo {
-    width: 100%;
+    width: 75%;
     aspect-ratio: 1;
     border-radius: 50%;
     overflow: hidden;
@@ -74,21 +84,14 @@
     object-position: center center;
     display: block;
   }
-
   .sidebar-info {
     font-size: 14px;
     line-height: 1.65;
     color: var(--body);
   }
-  .sidebar-info .role {
-    font-weight: 400;
-  }
-  .sidebar-info .dept {
-    color: var(--link);
-  }
-  .sidebar-info .uni {
-    margin-bottom: 6px;
-  }
+  .sidebar-info .role { font-weight: 400; }
+  .sidebar-info .dept { color: var(--link); }
+  .sidebar-info .uni { margin-bottom: 6px; }
   .sidebar-info .email {
     word-break: break-all;
     display: block;
@@ -102,32 +105,19 @@
     font-style: italic;
     line-height: 1.5;
   }
-
   .sidebar-links {
     margin-top: 18px;
     font-size: 14px;
   }
-  .sidebar-links a {
-    font-weight: 600;
-  }
-
-  /* ---- MAIN CONTENT ---- */
-  .main {
-    flex: 1;
-    min-width: 0;
-  }
-
+  .sidebar-links a { font-weight: 600; }
+  .main { flex: 1; min-width: 0; }
   .bio {
     font-size: 15px;
     line-height: 1.8;
     color: var(--body);
     margin-bottom: 14px;
   }
-
-  section {
-    margin-top: 40px;
-  }
-
+  section { margin-top: 40px; }
   .main h2 {
     font-size: 19px;
     font-weight: 700;
@@ -135,8 +125,6 @@
     margin-bottom: 14px;
     letter-spacing: -0.005em;
   }
-
-  /* ---- NUMBERED LISTS (papers) ---- */
   .pub-list {
     list-style: none;
     counter-reset: pub;
@@ -161,62 +149,37 @@
   .pub-status { color: var(--muted); }
   .pub-keywords { font-size: 12.5px; color: var(--muted); display: block; margin-top: 3px; }
   .pub-title { color: var(--ink); }
-
-  /* ---- TEACHING ---- */
   .teaching-item {
     margin-bottom: 14px;
     font-size: 14.5px;
     line-height: 1.55;
   }
-  .teaching-item .course-name {
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .teaching-item .course-detail {
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-  /* ---- ADVISORS ---- */
-  .committee-list {
-    list-style: none;
-  }
+  .teaching-item .course-name { font-weight: 500; color: var(--ink); }
+  .teaching-item .course-detail { color: var(--muted); font-size: 13px; }
+  .committee-list { list-style: none; }
   .committee-list li {
     margin-bottom: 12px;
     font-size: 14.5px;
     line-height: 1.5;
   }
-  .committee-list .advisor-name a {
-    color: var(--link);
-    font-weight: 600;
-  }
-  .committee-list .advisor-role {
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  /* ---- EDUCATION ---- */
-  .edu-list {
-    list-style: none;
-  }
+  .committee-list .advisor-name a { color: var(--link); font-weight: 600; }
+  .committee-list .advisor-role { font-size: 13px; color: var(--muted); }
+  .edu-list { list-style: none; }
   .edu-list li {
     margin-bottom: 10px;
     font-size: 14.5px;
     line-height: 1.5;
   }
-  .edu-degree {
-    font-weight: 500;
-    color: var(--ink);
-  }
+  .edu-degree { font-weight: 500; color: var(--ink); }
   .edu-school { color: var(--body); }
   .edu-year { color: var(--muted); font-size: 13px; }
-
-  /* ---- CONTACT ---- */
-  .contact-line {
+  .exp-item {
+    margin-bottom: 14px;
     font-size: 14.5px;
+    line-height: 1.55;
   }
-
-  /* ---- FOOTER ---- */
+  .exp-item .exp-org { font-weight: 500; color: var(--ink); }
+  .exp-item .exp-detail { color: var(--muted); font-size: 13px; }
   footer {
     max-width: 880px;
     margin: 0 auto;
@@ -225,178 +188,111 @@
     color: #bbb;
     text-align: center;
   }
-
-  /* ---- RESPONSIVE ---- */
   @media (max-width: 700px) {
-    .container {
-      flex-direction: column;
-      padding: 32px 20px 60px;
-      gap: 28px;
-    }
-    .sidebar {
-      width: 100%;
-      position: static;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .sidebar h1 {
-      width: 100%;
-      margin-bottom: 4px;
-    }
-    .photo {
-      width: 140px;
-      flex-shrink: 0;
-    }
-    .sidebar-right {
-      flex: 1;
-      min-width: 160px;
-    }
+    .container { flex-direction: column; padding: 32px 20px 60px; gap: 28px; }
+    .sidebar { width: 100%; position: static; display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+    .sidebar h1 { width: 100%; margin-bottom: 4px; }
+    .photo { width: 140px; flex-shrink: 0; }
+    .sidebar-right { flex: 1; min-width: 160px; }
   }
 </style>
 </head>
 <body>
-
 <div class="container">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <h1>Kevin P. Miner</h1>
-
     <div class="photo">
       <img src="photo.png" alt="Kevin P. Miner">
     </div>
-
     <div class="sidebar-right">
       <div class="sidebar-info">
-        <div class="role">DPhil Candidate</div>
-        <div class="dept"><a href="https://www.sbs.ox.ac.uk/">Saïd Business School</a></div>
+        <div class="role">PhD Student</div>
+        <div class="dept"><a href="https://www.sbs.ox.ac.uk/">Sa&#239;d Business School</a></div>
         <div class="uni">University of Oxford</div>
-        <a class="email" href="/cdn-cgi/l/email-protection#1e557b687770305377707b6c305a4e5657525e6d7f777a30716678716c7a307b7a6b"><span class="__cf_email__" data-cfemail="743f11021d1a5a391d1a11065a30243c3d383407151d105a1b0c121b06105a111001">[email&#160;protected]</span></a>
+        <a class="email" href="mailto:Kevin.Miner.DPHIL@said.oxford.edu">Kevin.Miner.DPHIL@said.oxford.edu</a>
         <div class="visiting">Currently visiting Questrom School of Business, Boston University</div>
       </div>
-
       <div class="sidebar-links">
         <a href="Miner_Kevin_CV.pdf">CV</a>
       </div>
     </div>
   </aside>
-
-  <!-- MAIN -->
   <div class="main">
+    <p class="bio">The arenas of business, politics, and society are becoming increasingly coupled. Their recursive interactions will define the next generation of large-scale organizations and democratic institutions.</p>
+    <p class="bio">I am a researcher applying organizational sociology and strategy theory, alongside rigorous qualitative and interpretive methods, to bring analytical clarity to this transformation.</p>
+    <p class="bio">I collaborate directly with executives and senior leaders at Fortune 500 firms, global consulting organizations, the United Nations, and major philanthropic organizations, as well as leading business and political scholars, to analyze the decisions shaping the evolving relationship between firms and the societies in which they operate.</p>
+    <p class="bio">I am affiliated with the <a href="https://www.sbs.ox.ac.uk/research/centres-and-initiatives/oxford-centre-corporate-reputation">Oxford Centre for Corporate Reputation</a> and the <a href="https://www.sbs.ox.ac.uk/research/centres-and-initiatives/skoll-centre-social-entrepreneurship">Skoll Centre for Social Entrepreneurship</a>.</p>
 
-    <p class="bio">
-      Welcome! I am a DPhil candidate at Saïd Business School, University of Oxford, and currently a visiting researcher at the Questrom School of Business, Boston University. My research sits at the intersection of organizational sociology, institutional theory, and strategy. I use qualitative and interpretive methods to study how organizations navigate social and political pressures—and how ideas travel, transform, and endure within and across organizational settings.
-    </p>
-    <p class="bio">
-      I am affiliated with the <a href="https://www.sbs.ox.ac.uk/research/centres-and-initiatives/oxford-centre-corporate-reputation">Oxford Centre for Corporate Reputation</a> and the <a href="https://www.sbs.ox.ac.uk/research/centres-and-initiatives/skoll-centre-social-entrepreneurship">Skoll Centre for Social Entrepreneurship</a>. Prior to Oxford, I worked as a Business Analyst at McKinsey &amp; Company.
-    </p>
-
-    <!-- WORKING PAPERS -->
     <section>
       <h2>Working Papers &amp; Research in Progress</h2>
       <ol class="pub-list">
-        <li>
-          Miner, K. <span class="pub-title">Adaptive Recombination: How Activated Ideas Persist in Organizations Amid Socio-Political Reversal.</span> [Dissertation] Data collection in progress.
-          <span class="pub-keywords">Keywords: corporate social and political activity, innovation, decoupling</span>
-        </li>
-        <li>
-          Miner, K. <span class="pub-title">The External Control of an Organization's Core: Socio-Political Influence on Organizational Purpose and Culture.</span> Data collection in progress.
-          <span class="pub-keywords">Keywords: corporate social and political activity, corporate purpose, management consulting</span>
-        </li>
-        <li>
-          Holzaepfel, N. and Miner, K. <span class="pub-title">Surveillance, Tear Gas, and Arrest: How Firms Use Security Services to Repress Activism.</span> Data collection in progress.
-          <span class="pub-keywords">Keywords: corporate social and political activity, energy industry, repression</span>
-        </li>
-        <li>
-          Miner, K., Hawbaker, A., Hallett, T., and Ventresca, M. <span class="pub-title">Inhabiting Ambiguity: An Interaction-Based Study of Vaughn's Dead Reckoning.</span> Research in progress. Target: <span class="pub-venue">Academy of Management Review</span>.
-          <span class="pub-keywords">Keywords: ambiguity, micro-institutional theory, inhabited institutions</span>
-        </li>
+        <li>Miner, K. <span class="pub-title">Adaptive Recombination: How Activated Ideas Persist in Organizations Amid Socio-Political Reversal.</span> [Dissertation] Data collection in progress.<span class="pub-keywords">Keywords: corporate social and political activity, innovation, decoupling</span></li>
+        <li>Miner, K. <span class="pub-title">The External Control of an Organization&#8217;s Core: Socio-Political Influence on Organizational Purpose and Culture.</span> Data collection in progress.<span class="pub-keywords">Keywords: corporate social and political activity, corporate purpose, management consulting</span></li>
+        <li>Holzaepfel, N. and Miner, K. <span class="pub-title">Surveillance, Tear Gas, and Arrest: How Firms Use Security Services to Repress Activism.</span> Data collection in progress.<span class="pub-keywords">Keywords: corporate social and political activity, energy industry, repression</span></li>
+        <li>Miner, K., Hawbaker, A., Hallett, T., and Ventresca, M. <span class="pub-title">Inhabiting Ambiguity: An Interaction-Based Study of Vaughn&#8217;s Dead Reckoning.</span> Research in progress. Target: <span class="pub-venue">Academy of Management Review</span>.<span class="pub-keywords">Keywords: ambiguity, micro-institutional theory, inhabited institutions</span></li>
       </ol>
     </section>
 
-    <!-- PUBLICATIONS -->
     <section>
       <h2>Published Articles &amp; Reports</h2>
       <ol class="pub-list">
-        <li>
-          Besharov, M. L., Miner, K., Grewal, A. K., &amp; Wunsch-Vincent, S., 2024. Special Theme 2024: Unlocking the Promise of Social Entrepreneurship. Pp 85–111 in Dutta, S., Lanvin, B., León, L., Wunsch-Vincent, S. (Eds.). <span class="pub-venue">Global Innovation Index 2024</span>. Geneva: World Intellectual Property Organization.
-        </li>
-        <li>
-          Besharov, M., Rayner, C., and Miner, K., 2025. Mapping the Social Innovation Terminology Landscape for Policymakers. Working Paper prepared for the Government Council on Social Innovation (GCSI).
-        </li>
+        <li>Besharov, M. L., Miner, K., Grewal, A. K., &amp; Wunsch-Vincent, S., 2024. Special Theme 2024: Unlocking the Promise of Social Entrepreneurship. Pp 85&#8211;111 in Dutta, S., Lanvin, B., Le&#243;n, L., Wunsch-Vincent, S. (Eds.). <a href="https://www.wipo.int/web-publications/global-innovation-index-2024/en/index.html"><span class="pub-venue">Global Innovation Index 2024</span></a>. Geneva: World Intellectual Property Organization.</li>
+        <li>Besharov, M., Rayner, C., and Miner, K., 2025. Mapping the Social Innovation Terminology Landscape for Policymakers. Working Paper prepared for the Government Council on Social Innovation (GCSI).</li>
       </ol>
     </section>
 
-    <!-- TEACHING MATERIALS -->
     <section>
       <h2>Teaching Materials</h2>
       <ol class="pub-list">
-        <li>
-          Nelson, R. &amp; Miner, K., 2021. Digital Transformation at the Washington Post: Innovating for the Next Generation. <span class="pub-venue">Darden School of Business Publishing</span>.
-        </li>
+        <li>Nelson, R. &amp; Miner, K., 2021. <a href="https://hbsp.harvard.edu/product/UV8443-PDF-ENG">Digital Transformation at the Washington Post: Innovating for the Next Generation</a>. <span class="pub-venue">Darden School of Business Publishing</span>.</li>
       </ol>
     </section>
 
-    <!-- TEACHING -->
     <section>
       <h2>Teaching</h2>
       <div class="teaching-item">
         <span class="course-name">Change Management</span> (with Prof. Lisa Rohrer)<br>
-        <span class="course-detail">MBA · Boston University, Questrom School of Business · January 2026</span>
+        <span class="course-detail">MBA &#183; Boston University, Questrom School of Business &#183; January 2026</span>
       </div>
       <div class="teaching-item">
         <span class="course-name">Principles of Macroeconomics</span> (with Prof. Lee Coppock)<br>
-        <span class="course-detail">Undergraduate · University of Virginia · Spring 2020, Spring 2021</span>
+        <span class="course-detail">Undergraduate &#183; University of Virginia &#183; Spring 2020, Spring 2021</span>
       </div>
       <div class="teaching-item">
         <span class="course-name">Principles of Microeconomics</span> (with Prof. Ken Elzinga)<br>
-        <span class="course-detail">Undergraduate · University of Virginia · Autumn 2019, Autumn 2020</span>
+        <span class="course-detail">Undergraduate &#183; University of Virginia &#183; Autumn 2019, Autumn 2020</span>
       </div>
     </section>
 
-    <!-- EDUCATION -->
     <section>
       <h2>Education</h2>
       <ul class="edu-list">
-        <li>
-          <span class="edu-degree">DPhil in Management</span> · <span class="edu-school">University of Oxford, Saïd Business School</span> <span class="edu-year">· 2023–present</span>
-        </li>
-        <li>
-          <span class="edu-degree">MPhil in Economic and Social History</span> · <span class="edu-school">University of Cambridge</span> <span class="edu-year">· 2021–2022</span>
-        </li>
-        <li>
-          <span class="edu-degree">BSc in Commerce and Economics</span> · <span class="edu-school">University of Virginia</span> <span class="edu-year">· 2017–2021</span>
-        </li>
+        <li><span class="edu-degree">DPhil in Management</span> &#183; <span class="edu-school">University of Oxford, Sa&#239;d Business School</span> <span class="edu-year">&#183; 2023&#8211;present</span></li>
+        <li><span class="edu-degree">MPhil in Economic and Social History</span> &#183; <span class="edu-school">University of Cambridge</span> <span class="edu-year">&#183; 2021&#8211;2022</span></li>
+        <li><span class="edu-degree">BSc in Commerce and Economics</span> &#183; <span class="edu-school">University of Virginia</span> <span class="edu-year">&#183; 2017&#8211;2021</span></li>
       </ul>
     </section>
 
-    <!-- DOCTORAL COMMITTEE -->
     <section>
       <h2>Doctoral Committee</h2>
       <ul class="committee-list">
-        <li>
-          <span class="advisor-name"><a href="https://www.sbs.ox.ac.uk/about-us/people/marya-besharov">Marya Besharov</a></span> (Supervisor)<br>
-          <span class="advisor-role">Professor of Organisations and Impact · Saïd Business School, University of Oxford</span>
-        </li>
-        <li>
-          <span class="advisor-name"><a href="https://www.sbs.ox.ac.uk/about-us/people/marc-ventresca">Marc Ventresca</a></span> (Supervisor)<br>
-          <span class="advisor-role">Associate Professor of Strategic Management · Saïd Business School, University of Oxford</span>
-        </li>
-        <li>
-          <span class="advisor-name"><a href="https://www.sbs.ox.ac.uk/about-us/people/tom-lawrence">Tom Lawrence</a></span> (Examiner)<br>
-          <span class="advisor-role">Professor of Strategy · Saïd Business School, University of Oxford</span>
-        </li>
-        <li>
-          <span class="advisor-name"><a href="https://www.bu.edu/questrom/profiles/siobhan-omahony/">Siobhán O'Mahony</a></span> (Examiner)<br>
-          <span class="advisor-role">Feld Family Professor in Innovation and Entrepreneurship · Questrom School of Business, Boston University</span>
-        </li>
+        <li><span class="advisor-name"><a href="https://www.sbs.ox.ac.uk/about-us/people/marya-besharov">Marya Besharov</a></span> (Supervisor)<br><span class="advisor-role">Professor of Organisations and Impact &#183; Sa&#239;d Business School, University of Oxford</span></li>
+        <li><span class="advisor-name"><a href="https://www.sbs.ox.ac.uk/about-us/people/marc-ventresca">Marc Ventresca</a></span> (Supervisor)<br><span class="advisor-role">Associate Professor of Strategic Management &#183; Sa&#239;d Business School, University of Oxford</span></li>
+        <li><span class="advisor-name"><a href="https://www.sbs.ox.ac.uk/about-us/people/tom-lawrence">Tom Lawrence</a></span> (Examiner)<br><span class="advisor-role">Professor of Strategy &#183; Sa&#239;d Business School, University of Oxford</span></li>
+        <li><span class="advisor-name"><a href="https://www.bu.edu/questrom/profiles/siobhan-omahony/">Siobh&#225;n O&#8217;Mahony</a></span> (Examiner)<br><span class="advisor-role">Feld Family Professor in Innovation and Entrepreneurship &#183; Questrom School of Business, Boston University</span></li>
       </ul>
     </section>
 
-    <!-- CONTACT -->
     <section>
-      <h2>Contact</h2>
-      <p class="contact-line">
-        <a href="/cdn-cgi/l/email-protection
+      <h2>Work Experience</h2>
+      <div class="exp-item">
+        <span class="exp-org">McKinsey &amp; Company</span> &#183; Business Analyst<br>
+        <span class="exp-detail">Washington, DC &#183; 2022&#8211;2023</span>
+      </div>
+    </section>
+
+  </div>
+</div>
+<footer>&copy; 2026 Kevin P. Miner</footer>
+</body>
+</html>
